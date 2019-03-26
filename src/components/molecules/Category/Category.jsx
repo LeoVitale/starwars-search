@@ -21,7 +21,7 @@ const Category = ({ title, data, fetchMethod, meta, keyLabel }) => {
       <Section>
         <Subtitle tag="h3">{title}</Subtitle>
 
-        {data.map((item) => {
+        {data.map(item => {
           return (
             <BodyText key={item} tag="p">
               {items[item] && items[item][keyLabel]}
