@@ -7,7 +7,7 @@ const MountComponent = props => mount(<App {...props} />);
 describe('Render App', () => {
   const component = MountComponent();
 
-  it('should render Input as expected', () => {
+  it('should render App as expected', () => {
     expect(component).toMatchSnapshot();
   });
 });
