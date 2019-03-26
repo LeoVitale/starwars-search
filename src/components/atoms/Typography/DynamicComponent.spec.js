@@ -8,13 +8,13 @@ describe('Render DynamicComponent', () => {
   it('should render DynamicComponent as expected', () => {
     const component = MountComponent();
     expect(component).toMatchSnapshot();
-  })
+  });
 
   it('should render DynamicComponent with other tag', () => {
     const props = {
-      tag: 'h3'
-    }
+      tag: 'h3',
+    };
     const component = MountComponent(props);
     expect(component).toMatchSnapshot();
-  })
+  });
 });
