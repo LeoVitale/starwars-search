@@ -17,6 +17,7 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.16.0",
     "customize-cra": "^0.2.12",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
@@ -37,7 +38,8 @@
     "react-app-rewired": "^2.1.0",
     "react-hot-loader": "^4.8.0",
     "react-scripts": "^2.1.8",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-mock-store": "^1.5.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
