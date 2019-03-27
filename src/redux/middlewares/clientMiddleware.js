@@ -17,7 +17,7 @@ export default function clientMiddleware(client) {
 
       actionPromise
         .then(
-          result => next({ ...rest, result: result.data, type: SUCCESS }),
+          result => next({ ...rest, result: result, type: SUCCESS }),
           error => next({ ...rest, error: error.toString(), type: FAILURE })
         )
         .catch(error => {

@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
         loading: false,
         error: false,
         isFetched: true,
-        searchResults: action.result.data,
+        searchResults: action.result,
       };
     case FIND_PEOPLE_FAILURE:
       return {
@@ -44,5 +44,6 @@ export default (state = initialState, action) => {
 export const searchTerm = (category, term) => dispatch =>
   dispatch({
     types: [FIND_PEOPLE_REQUEST, FIND_PEOPLE_RESPONSE, FIND_PEOPLE_FAILURE],
-    promise: client => client.get(SEARCH_URL(category, term)),
+    promise: client =>
+      client.get(SEARCH_URL(category, term)).then(response => response.data),
   });
