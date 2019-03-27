@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Thumb from './Thumb';
+import Thumb from './index';
 
 const MountComponent = props => mount(<Thumb {...props} />);
 

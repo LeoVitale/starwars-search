@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import SearchItem from './SearchItem';
+import SearchItem from './index';
 
 const MountComponent = props => mount(<SearchItem {...props} />);
 

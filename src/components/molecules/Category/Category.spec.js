@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Category from './Category';
+import Category from './index';
 
 const MountComponent = props => mount(<Category {...props} />);
 
