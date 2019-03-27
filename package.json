@@ -33,6 +33,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.11.0",
     "jest-enzyme": "^7.0.2",
+    "moxios": "^0.4.0",
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "react-app-rewired": "^2.1.0",
@@ -67,9 +68,7 @@
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "coveragePathIgnorePatterns": [
-      "src/components/blocks/Header/index.js",
-      "src/components/blocks/Button/index.js",
-      "src/registerServiceWorker.js"
+      "src/redux/ducks/index.js"
     ],
     "moduleNameMapper": {
       "^components(.*)$": "<rootDir>/src/components$1",

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const getId = text => text.replace(/[^0-9]/g, '');
+export const getImage = id =>
+  `${process.env.PUBLIC_URL}/assets/images/characters/${id}.jpg`;
 
 const arrayToObject = (array, key) =>
   array.reduce((obj, item) => {

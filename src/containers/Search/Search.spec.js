@@ -1,11 +1,22 @@
 import React from 'react';
+import configureMockStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import Search from './Search';
 
-const MountComponent = props => mount(<Search {...props} />);
+const mockStore = configureMockStore();
+const store = mockStore({
+  people: {},
+});
+
+const MountComponent = props => mount(<Search {...props} store={store} />);
 
 describe('Render Search', () => {
-  const component = MountComponent();
+  const props = {
+    searchResults: {
+      results: [],
+    },
+  };
+  const component = MountComponent(props);
 
   it('should render Search as expected', () => {
     expect(component).toMatchSnapshot();
@@ -13,7 +24,12 @@ describe('Render Search', () => {
 });
 
 describe('Search Events', () => {
-  const component = MountComponent();
+  const props = {
+    searchResults: {
+      results: [],
+    },
+  };
+  const component = MountComponent(props);
 
   it('should render Search as expected', () => {
     const input = component.find('input');

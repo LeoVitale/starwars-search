@@ -1,0 +1,21 @@
+{
+  "name": "Test Specie",
+  "classification": "mammal",
+  "designation": "sentient",
+  "average_height": "210",
+  "skin_colors": "gray",
+  "hair_colors": "black, brown",
+  "eye_colors": "blue, green, yellow, brown, golden, red",
+  "average_lifespan": "400",
+  "homeworld": "https://swapi.co/api/planets/1/",
+  "language": "Shyriiwook",
+  "people": [
+      "https://swapi.co/api/people/13/"
+  ],
+  "films": [
+      "https://swapi.co/api/films/1/"
+  ],
+  "created": "2014-12-10T16:44:31.486000Z",
+  "edited": "2015-01-30T21:23:03.074598Z",
+  "url": "https://swapi.co/api/species/1/"
+}

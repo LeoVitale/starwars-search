@@ -7,7 +7,8 @@ const MountComponent = props => mount(<SearchItem {...props} />);
 describe('Render SearchItem', () => {
   const props = {
     item: {
-      name: '',
+      name: 'luke',
+      url: 'http/url/1',
     },
   };
 

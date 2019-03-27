@@ -1,10 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from 'containers/App';
+import { Provider } from 'react-redux';
 
-const renderApp = () => render(<App />, document.getElementById('root'));
+import App from 'containers/App';
+import configureStore from './redux/storeConfig';
+
+const store = configureStore();
+
+const renderApp = () =>
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+  );
 
 if (process.env.NODE_ENV !== 'production' && module.hot) {
   module.hot.accept('containers/App', renderApp);
 }
+
 renderApp();
