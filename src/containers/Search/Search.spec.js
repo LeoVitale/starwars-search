@@ -11,3 +11,17 @@ describe('Render Search', () => {
     expect(component).toMatchSnapshot();
   });
 });
+
+describe('Search Events', () => {
+  const component = MountComponent();
+
+  it('should render Search as expected', () => {
+    const input = component.find('input');
+    input.simulate('change', {
+      target: {
+        value: 'luke',
+      },
+    });
+    expect(component.state().term).toEqual('luke');
+  });
+});
