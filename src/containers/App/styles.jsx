@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import background from 'images/backgrounds/100.jpg';
+
+const background = `${process.env.PUBLIC_URL}/assets/images/backgrounds/100.jpg`;
 
 export const GlobalStyle = createGlobalStyle`
   * {
