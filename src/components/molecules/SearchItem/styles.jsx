@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 14px;
   align-items: center;
   width: 1000px;
+  min-height: 128px;
   cursor: pointer;
 `;
 
