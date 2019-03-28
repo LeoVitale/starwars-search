@@ -2,6 +2,8 @@
 
 Project done with great pleasure and passion (yes, StarWars is a passion!), It took more than 4 hours but the idea is to better show some of my best skills using React
 
+Deployed using Basic Netlify Config
+[https://starwars-search.netlify.com/](https://starwars-search.netlify.com/)
 
 # Features
 
