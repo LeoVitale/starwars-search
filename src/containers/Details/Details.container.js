@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { getPeople } from 'ducks/people';
-import { getFilms } from 'ducks/films';
-import { getVehicles } from 'ducks/vehicles';
-import { getStarships } from 'ducks/starships';
-import { getSpecies } from 'ducks/species';
+import { getFilm } from 'ducks/films';
+import { getVehicle } from 'ducks/vehicles';
+import { getStarship } from 'ducks/starships';
+import { getSpecie } from 'ducks/species';
 import Details from './Details';
 
 const mapStateToProps = state => ({
@@ -20,10 +20,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   getPeople,
-  getFilms,
-  getVehicles,
-  getStarships,
-  getSpecies,
+  getVehicle,
+  getStarship,
+  getSpecie,
+  getFilm,
 };
 
 export default connect(

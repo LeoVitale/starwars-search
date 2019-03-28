@@ -16,7 +16,7 @@ const MetaOverlay = ({ people, meta }) => {
   } = meta;
   return (
     <DetailsContext.Consumer>
-      {({ getFilms, getVehicles, getSpecies, getStarships }) => {
+      {({ getFilm, getSpecie, getStarship, getVehicle }) => {
         return (
           <Container>
             <div>
@@ -30,7 +30,7 @@ const MetaOverlay = ({ people, meta }) => {
               </Section>
               <Category
                 title="Species"
-                fetchMethod={getSpecies}
+                fetchMethod={getSpecie}
                 data={species}
                 meta={metaSpecies}
                 keyLabel="name"
@@ -40,21 +40,21 @@ const MetaOverlay = ({ people, meta }) => {
             <div>
               <Category
                 title="Vehicles"
-                fetchMethod={getVehicles}
+                fetchMethod={getVehicle}
                 data={vehicles}
                 meta={metaVehicles}
                 keyLabel="name"
               />
               <Category
                 title="Starships"
-                fetchMethod={getStarships}
+                fetchMethod={getStarship}
                 data={starships}
                 meta={metaStarships}
                 keyLabel="name"
               />
               <Category
                 title="Films"
-                fetchMethod={getFilms}
+                fetchMethod={getFilm}
                 data={films}
                 meta={metaFilms}
                 keyLabel="title"

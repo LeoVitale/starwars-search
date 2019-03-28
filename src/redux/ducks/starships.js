@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         loading: false,
         error: false,
         isFetched: true,
-        items: { ...state.items, ...action.result },
+        items: { ...state.items, ...{[action.result.url]: action.result } },
       };
     case STARSHIPS_FAILURE:
       return {
@@ -40,9 +40,9 @@ export default (state = initialState, action) => {
   }
 };
 
-export const getStarships = urls => {
+export const getStarship = uri => {
   return {
     types: [STARSHIPS_REQUEST, STARSHIPS_RESPONSE, STARSHIPS_FAILURE],
-    promise: () => getItems(urls),
+    promise: client => client.get(uri).then(response => response.data)
   };
 };

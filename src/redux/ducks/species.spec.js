@@ -1,70 +1,65 @@
+import axios from 'axios';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import clientMiddleware from '../middlewares/clientMiddleware';
-import { SPECIES_REQUEST, SPECIES_RESPONSE, getSpecies } from './species'; // You can use any testing library
+import mockSpecie from '../../mock/specie.json';
 
+import {
+  SPECIES_REQUEST,
+  SPECIES_RESPONSE,
+  SPECIES_FAILURE,
+  getSpecie,
+} from './species';
+
+const axiosMock = new MockAdapter(axios);
 const middlewares = [thunk, clientMiddleware(axios)];
 const mockStore = configureMockStore(middlewares);
 
-const data = {
-  'https://swapi.co/api/species/3/': {
-    name: 'Wookiee',
-    classification: 'mammal',
-    designation: 'sentient',
-    average_height: '210',
-    skin_colors: 'gray',
-    hair_colors: 'black, brown',
-    eye_colors: 'blue, green, yellow, brown, golden, red',
-    average_lifespan: '400',
-    homeworld: 'https://swapi.co/api/planets/14/',
-    language: 'Shyriiwook',
-    people: ['https://swapi.co/api/people/13/', 'https://swapi.co/api/people/80/'],
-    films: [
-      'https://swapi.co/api/films/2/',
-      'https://swapi.co/api/films/7/',
-      'https://swapi.co/api/films/6/',
-      'https://swapi.co/api/films/3/',
-      'https://swapi.co/api/films/1/',
-    ],
-    created: '2014-12-10T16:44:31.486000Z',
-    edited: '2015-01-30T21:23:03.074598Z',
-    url: 'https://swapi.co/api/species/3/',
-  },
-};
+describe('actions', () => {
+  afterEach(() => {
+    axiosMock.reset();
+  });
 
-describe('async actions', () => {
-  it('creates SPECIES_RESPONSE when fetching people has been done', () => {
-    const normalAxios = axios.create();
-    const mockAxios = axios.create();
-    const mock = new MockAdapter(mockAxios);
-    const mockResponse = {
-      ...data,
-    };
+  describe('fetchUsers', () => {
+    it('creates SPECIES_RESPONSE action when fetching specie has been done', () => {
+      const uri = 'http://localhost/specie.json';
+      axiosMock.onGet(uri).reply(200, mockSpecie);
+      const store = mockStore({ species: {} });
+      const expectedActions = [
+        {
+          type: SPECIES_REQUEST,
+        },
+        {
+          type: SPECIES_RESPONSE,
+          result: { ...mockSpecie },
+        },
+      ];
 
-    mock.onGet('https://swapi.co/api/species/3/').reply(() => {
-      return Promise.all([
-        normalAxios.get('/api/species/3/').then(resp => resp.data),
-      ]).then(sources => [200, sources.reduce((agg, source) => agg.concat(source))]);
+      return store.dispatch(getSpecie(uri)).then(() => {
+        const result = store.getActions();
+        expect(result).toMatchObject(expectedActions);
+      });
     });
 
-    const expectedActions = [
-      {
-        type: SPECIES_REQUEST,
-      },
-      {
-        type: SPECIES_RESPONSE,
-        result: mockResponse,
-      },
-    ];
+    it('creates SPECIES_FAILURE action when fetching specie has been done', () => {
+      axiosMock.reset();
+      const uri = 'http://localhost/specie.json';
+      axiosMock.onGet(uri).reply(400);
+      const store = mockStore({ species: {} });
+      const expectedActions = [
+        {
+          type: SPECIES_REQUEST,
+        },
+        {
+          type: SPECIES_FAILURE,
+          error: 400
+        },
+      ];
 
-    const store = mockStore({
-      people: {},
-    });
-    return store.dispatch(getSpecies(['https://swapi.co/api/species/3/'])).then(() => {
-      // return of async actions
-      expect(store.getActions()).toEqual(expectedActions);
+      return store
+        .dispatch(getSpecie(uri))
+        .catch(() => expect(store.getActions()).toEqual(expectedActions));
     });
   });
 });

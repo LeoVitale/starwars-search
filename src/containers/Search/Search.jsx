@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import debounce from 'debounce';
 import Input from 'components/atoms/Input';
 import SearchItem from 'components/molecules/SearchItem';
-import { getId } from 'utils/swapi';
+import { getId, searchUrl } from 'utils/swapi';
 import { Container, SearchResults } from './styles';
 
 class Search extends PureComponent {
@@ -12,7 +12,7 @@ class Search extends PureComponent {
 
   setDebouncedSearch = debounce(term => {
     const { searchTerm } = this.props;
-    term && searchTerm('people', term);
+    term && searchTerm(searchUrl('people', term));
   }, 500);
 
   searchOnChange = ({ target }) => {

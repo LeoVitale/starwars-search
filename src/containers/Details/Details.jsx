@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Thumb from 'components/atoms/Thumb';
 import MetaOverlay from 'components/molecules/MetaOverlay';
-import { getImage } from 'utils/swapi';
+import { getImage, getCategoryUrl } from 'utils/swapi';
 import { DetailsContext } from './details-context';
 import { Container, Overlay } from './styles';
 
@@ -10,17 +10,18 @@ class Details extends PureComponent {
     const { getPeople, people, match } = this.props;
     const id = match.params.id;
     if (!people[id]) {
-      getPeople('people', id);
+      const url = getCategoryUrl('people', id);
+      getPeople(url);
     }
   }
 
   render() {
     const {
       people,
-      getFilms,
-      getVehicles,
-      getSpecies,
-      getStarships,
+      getFilm,
+      getVehicle,
+      getSpecie,
+      getStarship,
       meta,
       match,
     } = this.props;
@@ -32,7 +33,7 @@ class Details extends PureComponent {
 
     return (
       <DetailsContext.Provider
-        value={{ getFilms, getVehicles, getSpecies, getStarships }}
+        value={{ getFilm, getSpecie, getStarship, getVehicle }}
       >
         <Container>
           <Overlay />

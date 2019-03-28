@@ -1,8 +1,13 @@
 import axios from 'axios';
 
 export const getId = text => text.replace(/[^0-9]/g, '');
+
 export const getImage = id =>
   `${process.env.PUBLIC_URL}/assets/images/characters/${id}.jpg`;
+
+export const getCategoryUrl = (category, id) => `https://swapi.co/api/${category}/${id}/`;
+
+export const searchUrl = (category, term) => `https://swapi.co/api/${category}/?search=${term}`;
 
 const arrayToObject = (array, key) =>
   array.reduce((obj, item) => {

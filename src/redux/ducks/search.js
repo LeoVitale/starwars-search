@@ -1,5 +1,3 @@
-const SEARCH_URL = (category, term) => `https://swapi.co/api/${category}/?search=${term}`;
-
 export const FIND_PEOPLE_REQUEST = 'duco/people/FIND_PEOPLE_REQUEST';
 export const FIND_PEOPLE_RESPONSE = 'duco/people/FIND_PEOPLE_RESPONSE';
 export const FIND_PEOPLE_FAILURE = 'duco/people/FIND_PEOPLE_FAILURE';
@@ -41,9 +39,9 @@ export default (state = initialState, action) => {
   }
 };
 
-export const searchTerm = (category, term) => dispatch =>
+export const searchTerm = (uri) => dispatch =>
   dispatch({
     types: [FIND_PEOPLE_REQUEST, FIND_PEOPLE_RESPONSE, FIND_PEOPLE_FAILURE],
     promise: client =>
-      client.get(SEARCH_URL(category, term)).then(response => response.data),
+      client.get(uri).then(response => response.data),
   });

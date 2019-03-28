@@ -1,14 +1,18 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { BodyText, Subtitle } from 'components/atoms/Typography';
 import { Section } from './styles';
 
 const Category = ({ title, data, fetchMethod, meta, keyLabel }) => {
   const { items, loading, isFetched } = meta;
+  const [loadedCategory, setLoad] = useState(false);
   useEffect(() => {
     const tempData = data.filter(item => !items[item]);
-    if (fetchMethod && !loading && tempData.length > 0) {
-      fetchMethod(tempData);
+    if (fetchMethod && !loading && tempData.length > 0 && !loadedCategory) {
+      tempData.forEach((uri) => {
+        fetchMethod(uri);
+      });
+      setLoad(true);
     }
   });
 

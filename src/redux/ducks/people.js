@@ -1,7 +1,5 @@
 import { getId } from 'utils/swapi';
 
-const URL = (category, id) => `https://swapi.co/api/${category}/${id}/`;
-
 export const PEOPLE_REQUEST = 'duco/people/PEOPLE_REQUEST';
 export const PEOPLE_RESPONSE = 'duco/people/PEOPLE_RESPONSE';
 export const PEOPLE_FAILURE = 'duco/people/PEOPLE_FAILURE';
@@ -47,10 +45,10 @@ export default (state = initialState, action) => {
   }
 };
 
-export const getPeople = (category, id) => dispatch =>
+export const getPeople = uri => dispatch =>
   dispatch({
     types: [PEOPLE_REQUEST, PEOPLE_RESPONSE, PEOPLE_FAILURE],
-    promise: client => client.get(URL(category, id)).then(response => response.data),
+    promise: client => client.get(uri).then(response => response.data),
   });
 
 export const selectPerson = person => dispatch =>
