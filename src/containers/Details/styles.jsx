@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+const background = `${process.env.PUBLIC_URL}/assets/images/backgrounds/100.jpg`;
 export const Container = styled.div`
   display: flex;
   position: relative;
@@ -9,7 +10,7 @@ export const Container = styled.div`
   padding: 50px;
   background-color: #000;
   border-radius: 5px;
-  background: url(${`images/backgrounds/100.jpg`}) no-repeat center center;
+  background: url(${background}) no-repeat center center;
   background-size: cover;
   color: white;
   box-shadow: 0px 9px 33px 0px rgba(0, 0, 0, 0.53);
