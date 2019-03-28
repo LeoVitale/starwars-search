@@ -49,6 +49,26 @@ class Search extends PureComponent {
                 item={person}
               />
             ))}
+          {/* <Trail
+            native
+            keys={item => item.url}
+            items={searchResults.results}
+            from={{ opacity: 0, x: -100 }}
+            to={{ opacity: isFetched ? 1 : 0, x: isFetched ? 0 : 100 }}
+          >
+            {person => ({ x, opacity }) => {
+              return (
+                <animated.div
+                  style={{
+                    opacity,
+                    transform: x.interpolate(x => `translate3d(${x}%,0,0)`),
+                  }}
+                >
+                  <SearchItem onClick={this.onClickPerson(person)} item={person} />
+                </animated.div>
+              );
+            }}
+          </Trail> */}
         </SearchResults>
       </Container>
     );

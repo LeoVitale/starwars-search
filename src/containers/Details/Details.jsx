@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Thumb from 'components/atoms/Thumb';
+import BackButton from 'components/atoms/BackButton';
 import MetaOverlay from 'components/molecules/MetaOverlay';
 import { getImage, getCategoryUrl } from 'utils/swapi';
 import { DetailsContext } from './details-context';
@@ -13,6 +14,11 @@ class Details extends PureComponent {
       const url = getCategoryUrl('people', id);
       getPeople(url);
     }
+  }
+
+  backToSearch = () => {
+    const { history } = this.props;
+    history.push('/');
   }
 
   render() {
@@ -39,6 +45,7 @@ class Details extends PureComponent {
           <Overlay />
           <Thumb id={id} src={getImage(id)} circle />
           <MetaOverlay people={people[id]} meta={meta} />
+          <BackButton onClick={this.backToSearch} />
         </Container>
       </DetailsContext.Provider>
     );
